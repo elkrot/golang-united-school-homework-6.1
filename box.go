@@ -21,7 +21,7 @@ func NewBox(shapesCapacity int) *box {
 // returns the error in case it goes out of the shapesCapacity range.
 func (b *box) AddShape(shape Shape) error {
 	if len(b.shapes) == b.shapesCapacity {
-		return fmt.Errorf("not my error")
+		return fmt.Errorf("goes out of the shapesCapacity range")
 	}
 
 	b.shapes = append(b.shapes, shape)
@@ -32,7 +32,7 @@ func (b *box) AddShape(shape Shape) error {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
 	if len(b.shapes) <= i {
-		return nil, fmt.Errorf("not my error")
+		return nil, fmt.Errorf("index doesn't exist or index went out of the range")
 	}
 	return b.shapes[i], nil
 
@@ -42,7 +42,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 	if len(b.shapes) <= i {
-		return nil, fmt.Errorf("not my error")
+		return nil, fmt.Errorf("index doesn't exist or index went out of the range")
 	}
 
 	shape := b.shapes[i]
@@ -54,7 +54,7 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
 	if len(b.shapes) <= i {
-		return nil, fmt.Errorf("not my error")
+		return nil, fmt.Errorf("index doesn't exist or index went out of the range")
 	}
 	removed := b.shapes[i]
 	b.shapes[i] = shape
@@ -83,7 +83,7 @@ func (b *box) RemoveAllCircles() error {
 	}
 
 	if count == 0 {
-		return fmt.Errorf("count == 0")
+		return fmt.Errorf("circles are not exist in the list")
 	}
 	b.shapes = result
 	return nil
